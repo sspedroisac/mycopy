@@ -1,0 +1,12 @@
+services:
+  mycopy:
+    build: .
+    container_name: mycopy
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - .:/app
+    network_mode: host
+    security_opt:
+      - seccomp:unconfined # evita problemas com o sandbox do Chromium
+    command: sh -c "npm install && npm start"
